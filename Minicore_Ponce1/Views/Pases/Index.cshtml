@@ -1,0 +1,153 @@
+﻿@model IEnumerable<Minicore_Ponce1.Models.Pase>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Usuario.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaCompra)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TtipoPase)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaCompra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TtipoPase)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.PaseID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.PaseID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.PaseID })
+            </td>
+        </tr>
+    }
+</table>
+
+<table class="table">
+    <thead>
+        <b>Logica de Pases</b>
+    </thead>
+    <br />
+    <br />
+    <tr>
+        <td>
+            <b>Tipo Pase</b>
+        </td>
+        <td>
+            <b>Saldo</b>
+        </td>
+        <td>
+            <b>Numero de Pases</b>
+        </td>
+        <td>
+            <b>Costo de los Pases</b>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Mensual
+        </td>
+        <td>
+            25
+        </td>
+        <td>
+            96
+        </td>
+        <td>
+            0.260
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Semestral
+        </td>
+        <td>
+            50
+        </td>
+        <td>
+            576
+        </td>
+        <td>
+            0.087
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Anual
+        </td>
+        <td>
+            80
+        </td>
+        <td>
+            1052
+        </td>
+        <td>
+            0.076
+        </td>
+    </tr>
+</table>
+
+@using (Html.BeginForm("Calcular", "Pases", FormMethod.Get))
+{
+    <b>Seleccione la fecha desde la que desea calcular el uso de pases</b>
+    <br />
+    <span>From</span>
+    <input type="date" name="fechainicio">
+    <input type="submit" id="FilterOptions" value="Calcular" />
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Usuario.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FinTentativo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pasesRestantes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.saldoRestante)
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Usuario.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FinTentativo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pasesRestantes)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.saldoRestante)
+                </td>
+            </tr>
+
+        }
+    </table>
+}

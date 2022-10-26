@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "mssql2": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/minicore-ponce1dbserver/databases/miniCoreDbContext",
+      "type": "mssql.azure",
+      "connectionId": "miniCoreDbContext",
+      "secretStore": "AzureAppSettings"
+    },
+    "secrets1": {
+      "type": "secrets",
+      "connectionId": "",
+      "suggestion": "true",
+      "ignored": "true"
+    }
+  }
+}
